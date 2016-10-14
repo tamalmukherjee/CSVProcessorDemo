@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0F527E0-A891-4FE4-8D49-E7A348B29F33}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{9A618B2D-5FF4-4C8B-A113-A34EE3C15CF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSVProcessorDemo</RootNamespace>
-    <AssemblyName>CSVProcessorDemo</AssemblyName>
+    <RootNamespace>DataLoader</RootNamespace>
+    <AssemblyName>DataLoader</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,29 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IDataLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataLoader\DataLoader.csproj">
-      <Project>{9A618B2D-5FF4-4C8B-A113-A34EE3C15CF9}</Project>
-      <Name>DataLoader</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileChecker\FileChecker.csproj">
-      <Project>{9013A6D4-AE30-43BD-BB08-3DF78214476B}</Project>
-      <Name>FileChecker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileReader\FileReader.csproj">
-      <Project>{33B44066-1776-47E0-BD9A-30E90C995F0D}</Project>
-      <Name>FileReader</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProcessManager\ProcessManager.csproj">
-      <Project>{9713557F-38D2-496A-BFD1-D2BFA5114554}</Project>
-      <Name>ProcessManager</Name>
-    </ProjectReference>
+    <Compile Include="SQLDataLoader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

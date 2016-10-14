@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSVProcessorDemo")]
+[assembly: AssemblyTitle("Logger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CSVProcessorDemo")]
+[assembly: AssemblyProduct("Logger")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d0f527e0-a891-4fe4-8d49-e7a348b29f33")]
+[assembly: Guid("2d2db937-0487-4ad2-ba52-21fa23b5f473")]
 
 // Version information for an assembly consists of the following four values:
 //
