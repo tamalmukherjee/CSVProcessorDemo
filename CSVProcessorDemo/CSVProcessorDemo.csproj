@@ -62,6 +62,10 @@
       <Project>{33B44066-1776-47E0-BD9A-30E90C995F0D}</Project>
       <Name>FileReader</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{2D2DB937-0487-4AD2-BA52-21FA23B5F473}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProcessManager\ProcessManager.csproj">
       <Project>{9713557F-38D2-496A-BFD1-D2BFA5114554}</Project>
       <Name>ProcessManager</Name>

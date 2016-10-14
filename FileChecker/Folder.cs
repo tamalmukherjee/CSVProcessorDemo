@@ -5,13 +5,22 @@ namespace FileChecker
 {
     public class Folder : IFileChecker
     {
-        public List<KeyValuePair<string, string>> GetCSVFileNames(string directoryPath)
+        public List<KeyValuePair<string, string>> GetCSVFilesFromSource(string srcDirPath, string tempDirPath)
         {
-            var filePaths = Directory.GetFiles(directoryPath, "*.csv");
+            var filePaths = Directory.GetFiles(srcDirPath, "*.csv");
             var retObj = new List<KeyValuePair<string, string>>();
+            if (!Directory.Exists(tempDirPath))
+            {
+                Directory.CreateDirectory(tempDirPath);
+            }
             foreach (var filePath in filePaths)
             {
-                retObj.Add(new KeyValuePair<string, string>(Path.GetFileName(filePath), filePath));
+                var fileName = Path.GetFileName(filePath);
+                var tempFilePath = Path.Combine(tempDirPath, fileName);
+
+                File.Copy(filePath, tempFilePath, true);
+
+                retObj.Add(new KeyValuePair<string, string>(fileName, tempFilePath));
             }
             return retObj;
         }

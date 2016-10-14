@@ -6,6 +6,11 @@ namespace FileReader
 {
     public class CSVReader : IFileReader
     {
+        public void DeleteFile(string filePath)
+        {
+            File.Delete(filePath);
+        }
+
         public DataTable GetDataFromCSV(string filePath)
         {
             var Lines = File.ReadAllLines(filePath);

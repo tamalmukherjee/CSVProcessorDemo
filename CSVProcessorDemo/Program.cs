@@ -1,6 +1,7 @@
 ﻿using DataLoader;
 using FileChecker;
 using FileReader;
+using Logger;
 using ProcessManager;
 using System;
 
@@ -15,16 +16,17 @@ namespace CSVProcessorDemo
             IFileChecker fileChecker = new Folder();
             IFileReader fileReader = new CSVReader();
             IDataLoader dataLoader = new SQLDataLoader();
+            ILogger logger = new DBLogger();
 
             // configuration data
-            var folderPath = @"C:\TestCSVLoader";
+            var srcDirPath = @"C:\TestCSVFilesSource";
+            var tempDirPath = @"C:\CSVDemoTemp";
             var dbConnStr = @"Server=AZSAW0095;Database=WGD;User Id=frame_dev;Password=Kolkata@123;";
             var targetTable = "CSVDemo";
 
-            workflow.ProcessAndLoadFiles(folderPath, dbConnStr, fileChecker, fileReader, targetTable, dataLoader);
-
-
-            Console.ReadKey();
+            logger.logInfo("Starting process.");
+            workflow.ProcessAndLoadFiles(srcDirPath, tempDirPath, dbConnStr, fileChecker, fileReader, targetTable, dataLoader, logger);
+            logger.logInfo("Process completed.");
         }
     }
 }

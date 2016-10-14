@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DataLoader
@@ -7,18 +8,36 @@ namespace DataLoader
     {
         public bool LoadDataIntoTable(DataTable data, string dbConnStr, string targetTable)
         {
-            using (var bulkCopy = new SqlBulkCopy(dbConnStr))
+            using (var conn = new SqlConnection(dbConnStr))
             {
-                foreach (DataColumn col in data.Columns)
+                conn.Open();
+                var tran = conn.BeginTransaction();
+                try
                 {
-                    bulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
-                }
+                    using (var bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.Default, tran))
+                    {
+                        foreach (DataColumn col in data.Columns)
+                        {
+                            bulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
+                        }
 
-                bulkCopy.BulkCopyTimeout = 600;
-                bulkCopy.DestinationTableName = targetTable;
-                bulkCopy.WriteToServer(data);
+                        bulkCopy.BulkCopyTimeout = 600;
+                        bulkCopy.DestinationTableName = targetTable;
+                        bulkCopy.WriteToServer(data);
+                    }
+                    tran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
-            return true;
         }
     }
 }

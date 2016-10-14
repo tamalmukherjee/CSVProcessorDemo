@@ -4,6 +4,6 @@ namespace FileChecker
 {
     public interface IFileChecker
     {
-        List<KeyValuePair<string, string>> GetCSVFileNames(string directoryPath);
+        List<KeyValuePair<string, string>> GetCSVFilesFromSource(string srcDirPath, string tempDirPath);
     }
 }

@@ -57,6 +57,10 @@
       <Project>{33B44066-1776-47E0-BD9A-30E90C995F0D}</Project>
       <Name>FileReader</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{2D2DB937-0487-4AD2-BA52-21FA23B5F473}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
