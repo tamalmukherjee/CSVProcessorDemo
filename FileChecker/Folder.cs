@@ -7,7 +7,7 @@ namespace FileChecker
     {
         public List<KeyValuePair<string, string>> GetCSVFilesFromSource(string srcDirPath, string tempDirPath)
         {
-            var filePaths = Directory.GetFiles(srcDirPath, "*.csv");
+            var filePaths = Directory.GetFiles(srcDirPath);
             var retObj = new List<KeyValuePair<string, string>>();
             if (!Directory.Exists(tempDirPath))
             {
@@ -16,11 +16,12 @@ namespace FileChecker
             foreach (var filePath in filePaths)
             {
                 var fileName = Path.GetFileName(filePath);
-                var tempFilePath = Path.Combine(tempDirPath, fileName);
-
-                File.Copy(filePath, tempFilePath, true);
-
-                retObj.Add(new KeyValuePair<string, string>(fileName, tempFilePath));
+                if(fileName.EndsWith(".csv", System.StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var tempFilePath = Path.Combine(tempDirPath, fileName);
+                    File.Copy(filePath, tempFilePath, true);
+                    retObj.Add(new KeyValuePair<string, string>(fileName, tempFilePath));
+                }
             }
             return retObj;
         }

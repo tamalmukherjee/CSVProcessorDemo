@@ -31,7 +31,6 @@ namespace ProcessManager
                     catch(Exception ex)
                     {
                         logger.LogError("Error occurred during processing of " + file.Key + ". Exception details: " + ex.StackTrace);
-                        return false;
                     }
                 }
                 return true;
