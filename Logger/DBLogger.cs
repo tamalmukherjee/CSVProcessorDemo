@@ -34,20 +34,11 @@ namespace Logger
                     {
                         myCommand.Parameters.AddWithValue("@type", type);
                         myCommand.Parameters.AddWithValue("@logdata", msg);
-                        try
-                        {
-                            myCommand.ExecuteNonQuery();
-                        }
-                        catch(Exception ex) { }
-                        finally
-                        {
-                            conn.Close();
-                        }
+                        myCommand.ExecuteNonQuery();
                     }
                 }
-
             }
-            catch (Exception ex) { }
+            catch { }
         }
     }
 }

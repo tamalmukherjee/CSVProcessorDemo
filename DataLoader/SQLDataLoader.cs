@@ -32,11 +32,7 @@ namespace DataLoader
                 {
                     tran.Rollback();
                     throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                }                
             }
         }
     }
