@@ -16,7 +16,8 @@ namespace FileChecker
             foreach (var filePath in filePaths)
             {
                 var fileName = Path.GetFileName(filePath);
-                if(fileName.EndsWith(".csv", System.StringComparison.CurrentCultureIgnoreCase))
+                var fileExtension = Path.GetExtension(filePath);
+                if (fileExtension == ".csv")
                 {
                     var tempFilePath = Path.Combine(tempDirPath, fileName);
                     File.Copy(filePath, tempFilePath, true);
