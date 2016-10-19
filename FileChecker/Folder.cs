@@ -7,7 +7,7 @@ namespace FileChecker
     {
         public List<KeyValuePair<string, string>> GetCSVFilesFromSource(string srcDirPath, string tempDirPath)
         {
-            var filePaths = Directory.GetFiles(srcDirPath);
+            var filePaths = Directory.GetFiles(srcDirPath, "*.csv");
             var retObj = new List<KeyValuePair<string, string>>();
             if (!Directory.Exists(tempDirPath))
             {
